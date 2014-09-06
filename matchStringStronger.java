@@ -24,18 +24,18 @@ public class matchStringStronger extends JFrame {
 
 	JTextField inputField = new JTextField();
 	JList outputList = new JList();
-	JButton cnctBtn = new JButton("Ú‘±");
-	JButton stngBtn = new JButton("İ’è");
+	JButton cnctBtn = new JButton("æ¥ç¶š");
+	JButton stngBtn = new JButton("è¨­å®š");
 	JScrollPane jsp = new JScrollPane(outputList);
-	JCheckBox cb = new JCheckBox("Ú‘±‘O‚ÉŒx‚ğo‚·B");
+	JCheckBox cb = new JCheckBox("æ¥ç¶šå‰ã«è­¦å‘Šã‚’å‡ºã™ã€‚");
 
 	GridLayout gr = new GridLayout(3,1);
 	GridBagLayout gbl = new GridBagLayout();
 	GridBagConstraints gbc = new GridBagConstraints();
 
+	// Githubã‚ˆã‚Šè¿½åŠ 
 
-
-	// ”íŒŸõ’l
+	// è¢«æ¤œç´¢å€¤
 	Object[] master = {
 					 "abc    de"
 					,"adcde"
@@ -102,7 +102,7 @@ public class matchStringStronger extends JFrame {
 			str = searchList.toArray();
 			outputList.setListData(str);
 
-			// ƒtƒB[ƒ‹ƒh‚ª‹ó”’‚É‚È‚Á‚½‚çList‚ğ‘Síœ
+			// ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãŒç©ºç™½ã«ãªã£ãŸã‚‰Listã‚’å…¨å‰Šé™¤
 			if (text.length() == 0) {
 				Object[] nulObj = {""};
 				str = null;
@@ -115,7 +115,7 @@ public class matchStringStronger extends JFrame {
 
 	public class btnActionEvent extends JFrame implements ActionListener {
 		/*
-		 * uÚ‘±vƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«‚ÌƒAƒNƒVƒ‡ƒ“B
+		 * ã€Œæ¥ç¶šã€ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã¨ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚
 		 *
 		 */
 
@@ -127,8 +127,8 @@ public class matchStringStronger extends JFrame {
 	}
 	public boolean isStrRegResult (String ptnBase, String reg) {
         /**
-         * ‚±‚Ìƒƒ\ƒbƒh‚ÍstrRegResult‚Æ’†g‚Íˆê‚Å‚·‚ªAƒ}ƒbƒ`‚µ‚È‚©‚Á‚½ê‡‚Ífalse‚ğ•Ô‚·
-         * ‚à‚Ì‚Å‚·B
+         * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯strRegResultã¨ä¸­èº«ã¯ä¸€ç·’ã§ã™ãŒã€ãƒãƒƒãƒã—ãªã‹ã£ãŸå ´åˆã¯falseã‚’è¿”ã™
+         * ã‚‚ã®ã§ã™ã€‚
          */
     	boolean isResult = true;
     	String isNull = strRegResult(ptnBase, reg);
@@ -142,9 +142,9 @@ public class matchStringStronger extends JFrame {
 
     public String strRegResult (String ptnBase, String reg) {
         /**
-         * ‚±‚Ìƒƒ\ƒbƒh‚Í³‹K•\Œ»‚Ü‚í‚è‚ÌƒNƒ‰ƒX‚Ìg‚¢Ÿè‚ªˆ«‚¢‚æ‚¤‚È‹C‚ª‚µ‚½‚Ì‚Å
-         * ƒpƒ^ƒ“ƒ}ƒbƒ`‚³‚¹‚½‚¢•¶š—ñ‚Æƒpƒ^ƒ“‚ğˆø”‚Éæ‚èA‚»‚ÌŒ‹‰Ê‚ğ–ß‚è’l‚Æ‚·‚é
-         * ‚Æ‚¢‚¤‚à‚Ì‚Å‚·B
+         * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯æ­£è¦è¡¨ç¾ã¾ã‚ã‚Šã®ã‚¯ãƒ©ã‚¹ã®ä½¿ã„å‹æ‰‹ãŒæ‚ªã„ã‚ˆã†ãªæ°—ãŒã—ãŸã®ã§
+         * ãƒ‘ã‚¿ãƒ³ãƒãƒƒãƒã•ã›ãŸã„æ–‡å­—åˆ—ã¨ãƒ‘ã‚¿ãƒ³ã‚’å¼•æ•°ã«å–ã‚Šã€ãã®çµæœã‚’æˆ»ã‚Šå€¤ã¨ã™ã‚‹
+         * ã¨ã„ã†ã‚‚ã®ã§ã™ã€‚
          *
          */
 
@@ -161,7 +161,7 @@ public class matchStringStronger extends JFrame {
 
     }
 
-	// ƒƒCƒ“ƒNƒ‰ƒX
+	// ãƒ¡ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹
 	public static void main(String[] args) {
 		matchStringStronger mss = new matchStringStronger();
 
