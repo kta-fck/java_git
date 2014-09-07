@@ -1,5 +1,3 @@
-package java_git;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
