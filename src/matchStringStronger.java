@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,7 +17,12 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-
+/*
+ * @TODO
+ * 閉じるボタンでプロセス殺すようにする
+ *
+ *
+ */
 public class matchStringStronger extends JFrame {
 
 
@@ -31,21 +37,25 @@ public class matchStringStronger extends JFrame {
 	GridBagLayout gbl = new GridBagLayout();
 	GridBagConstraints gbc = new GridBagConstraints();
 
+	// ------------------------------------------
+	// test
+	File testFilePath = new File("C:\\t3g-dev\\workspace_1406_01\\java_git\\src\\testmaster.txt"); // Security
+	settingWindow sw = new settingWindow();
+	ArrayList<Object> testList = sw.getMasterArrayList(testFilePath);
 
 
-	// 被検索値
-	Object[] master = {
-					 "abc    de"
-					,"adcde"
-					,"edaddd"
-	};
+
+
+	// ------------------------------------------
+
 
 	public matchStringStronger() {
 		setSize(400, 200);
-		setTitle("Match StringLine Stronger");
+		setTitle("サジェスト");
 
 		inputField.addKeyListener(new KeyEventMethod());
 		cnctBtn.addActionListener(new btnActionEvent());
+		stngBtn.addActionListener(new btnActionEvent());
 
 		setLayout(gbl);
 
@@ -78,6 +88,7 @@ public class matchStringStronger extends JFrame {
 		gbl.setConstraints(stngBtn, gbc);
 		getContentPane().add(stngBtn);
 
+
 	}
 
 	public class KeyEventMethod extends KeyAdapter {
@@ -85,16 +96,28 @@ public class matchStringStronger extends JFrame {
 		Object[] search;
 		public void keyReleased (KeyEvent ke) {
 			ArrayList<Object> searchList = new ArrayList<Object>();
+			ArrayList<Object> masterList = new ArrayList<Object>(); // リプレイスの受け入れ先
+
 
 			Object[] str;
 			String text;	// フィールドの値をテキストに代入
 			text = inputField.getText();
 
+			// -----------------------------------
+			for (Object obb : testList) {
+				String[] spltString = obb.toString().split(",");
+				String aryString = spltString[0] + "    " + spltString[1];
+
+				masterList.add(aryString);
+			}
+			// -----------------------------------
+
+
 			/*
 			 * サジェスト機能
 			 *
 			 */
-
+			Object[] master = masterList.toArray();
 			search = master ;
 
 			for (Object obj : search) {
@@ -131,12 +154,29 @@ public class matchStringStronger extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+
 			JList listStr = outputList;
-			String testString = "";
-			if (listStr != null) {
-				testString = (listStr.getSelectedValue()).toString();
+			Object obj = listStr.getSelectedValue();
+
+			if (e.getSource() == stngBtn) {
+				/*
+				 * 設定ボタン押したら表示
+				 */
+				sw.setVisible(true);
+			} else {
+				// ---------------------------------------
+				// デバッグコード
+				// ---------------------------------------
+				// 「接続」ボタンを押した時に、選択されているリストのテキストを
+				// 取得する。
+
+				String testString = "リストが選択されていません。";
+				if (obj != null) {
+					testString = obj.toString();	// リストが選択されていない場合、nullになるのでその対応
+				}
+				System.out.println(testString);
+				// ---------------------------------------
 			}
-			System.out.println(testString);
 		}
 	}
 	public boolean isStrRegResult (String ptnBase, String reg) {
