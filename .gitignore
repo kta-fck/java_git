@@ -16,3 +16,7 @@ hs_err_pid*
 .settings/
 .project
 
+#Exel temporary file
+~$raku_rdp.xlsx
+
+
