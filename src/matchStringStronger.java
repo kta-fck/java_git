@@ -31,7 +31,7 @@ public class matchStringStronger extends JFrame {
 	GridBagLayout gbl = new GridBagLayout();
 	GridBagConstraints gbc = new GridBagConstraints();
 
-	// Githubより追加
+
 
 	// 被検索値
 	Object[] master = {
@@ -90,6 +90,10 @@ public class matchStringStronger extends JFrame {
 			String text;
 			text = inputField.getText();
 
+			/*
+			 * search配列にマスタを入れておき、入力（text）から
+			 *
+			 */
 			search = master ;
 			for (Object obj : search) {
 				String chk = obj.toString();
