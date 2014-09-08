@@ -87,20 +87,26 @@ public class matchStringStronger extends JFrame {
 			ArrayList<Object> searchList = new ArrayList<Object>();
 
 			Object[] str;
-			String text;
+			String text;	// フィールドの値をテキストに代入
 			text = inputField.getText();
 
 			/*
-			 * search配列にマスタを入れておき、入力（text）から
+			 * サジェスト機能
 			 *
 			 */
+
 			search = master ;
+
 			for (Object obj : search) {
 				String chk = obj.toString();
 				if (isStrRegResult(chk, text)) {
-					searchList.add((Object)chk);
+					searchList.add((Object)chk);	// マッチしたものを代入。
 				}
 			}
+
+
+			// ArrayListから配列にしてリストを生成。
+			//
 			str = searchList.toArray();
 			outputList.setListData(str);
 
@@ -122,9 +128,15 @@ public class matchStringStronger extends JFrame {
 		 */
 
 
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			JList listStr = outputList;
+			String testString = "";
+			if (listStr != null) {
+				testString = (listStr.getSelectedValue()).toString();
+			}
+			System.out.println(testString);
 		}
 	}
 	public boolean isStrRegResult (String ptnBase, String reg) {
