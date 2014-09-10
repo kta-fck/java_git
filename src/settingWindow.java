@@ -14,22 +14,23 @@ import javax.swing.JLabel;
 
 
 
+@SuppressWarnings("serial")
 public class settingWindow extends JFrame {
 
 
-	// ƒNƒ‰ƒXƒtƒB[ƒ‹ƒh
+	// ã‚¯ãƒ©ã‚¹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
 	String readString = "";
 	ArrayList<Object> mstrList = new ArrayList<Object>();
 	String fileStr = "";
 	File filePath;
 
-	JButton settingButton = new JButton("İ’è‚Æ•ÒW");
-	JButton masterButton = new JButton("ƒ}ƒXƒ^");
+	JButton settingButton = new JButton("ç™»éŒ²ã¨ç·¨é›†");
+	JButton masterButton = new JButton("ãƒã‚¹ã‚¿^");
 
-	JLabel stnBtnLabel = new JLabel("ƒ†[ƒU[‚Ì“o˜^‚Æ•ÒW");
-	JLabel mstrBtnLabel = new JLabel("ƒ†[ƒU‚Ìƒ}ƒXƒ^ƒtƒ@ƒCƒ‹‚Ì‘I‘ğ");
+	JLabel stnBtnLabel = new JLabel("ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ç™»éŒ²ã¨ç·¨é›†");
+	JLabel mstrBtnLabel = new JLabel("ãƒ¦ãƒ¼ã‚¶ã®ãƒã‚¹ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã®é¸æŠ");
 
-	JCheckBox cnfrmbox = new JCheckBox("Ú‘±‘O‚ÉŠm”F‚ğs‚¤");
+	JCheckBox cnfrmbox = new JCheckBox("æ¥ç¶šå‰ã«ç¢ºèªã‚’è¡Œã†");
 
 
 
@@ -40,8 +41,8 @@ public class settingWindow extends JFrame {
 
 	public settingWindow () {
 
-		setSize(300, 300);
-		setTitle("İ’è‰æ–Ê");
+		setSize(400, 300);
+		setTitle("è¨­å®šç”»é¢");
 		setLayout(stnGbl);
 
 		stnGbc.gridx = 0; stnGbc.gridy = 0 ;stnGbc.gridwidth = 1;
@@ -94,7 +95,7 @@ public class settingWindow extends JFrame {
 			}
 		}
 	} catch (IOException e )  {
-		System.out.println("ƒtƒ@ƒCƒ‹“Ç‚İ‚İƒGƒ‰[");
+		System.out.println("ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿ã‚¨ãƒ©ãƒ¼");
 	}
 		return mstrList;
 	}

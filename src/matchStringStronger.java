@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -17,14 +19,17 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+
 /*
  * @TODO
  * 閉じるボタンでプロセス殺すようにする
  *
  *
  */
+@SuppressWarnings("serial")
 public class matchStringStronger extends JFrame {
 
+	private static matchStringStronger mss = new matchStringStronger();
 
 	JTextField inputField = new JTextField();
 	JList outputList = new JList();
@@ -36,10 +41,9 @@ public class matchStringStronger extends JFrame {
 	GridLayout gr = new GridLayout(3,1);
 	GridBagLayout gbl = new GridBagLayout();
 	GridBagConstraints gbc = new GridBagConstraints();
-
 	// ------------------------------------------
 	// test
-	File testFilePath = new File("C:\\t3g-dev\\workspace_1406_01\\java_git\\src\\testmaster.txt"); // Security
+	File testFilePath = new File("C:\\pleiades\\workspace\\java_git\\src\\testmaster.txt"); // Security
 	settingWindow sw = new settingWindow();
 	ArrayList<Object> testList = sw.getMasterArrayList(testFilePath);
 
@@ -49,14 +53,15 @@ public class matchStringStronger extends JFrame {
 	// ------------------------------------------
 
 
-	public matchStringStronger() {
+	private matchStringStronger() {
 		setSize(400, 200);
 		setTitle("サジェスト");
 
 		inputField.addKeyListener(new KeyEventMethod());
 		cnctBtn.addActionListener(new btnActionEvent());
 		stngBtn.addActionListener(new btnActionEvent());
-
+		sw.addWindowListener(new closeChildWindow());
+		super.addWindowListener(new closeChildWindow());
 		setLayout(gbl);
 
 		/*
@@ -73,11 +78,6 @@ public class matchStringStronger extends JFrame {
 		gbl.setConstraints(jsp, gbc);
 		getContentPane().add(jsp);
 
-//		gbc.gridx = 0; gbc.gridy = 2 ;gbc.gridwidth = 1;
-//		gbc.weightx = 1.0; gbc.weighty = 1.0; gbc.fill = GridBagConstraints.VERTICAL;
-//		gbl.setConstraints(cb, gbc);
-//		getContentPane().add(cb);
-
 		gbc.gridx = 1; gbc.gridy = 2 ;gbc.gridwidth = 1;
 		gbc.weightx = 1.0; gbc.weighty = 1.0; gbc.fill = GridBagConstraints.VERTICAL;
 		gbl.setConstraints(cnctBtn, gbc);
@@ -88,7 +88,8 @@ public class matchStringStronger extends JFrame {
 		gbl.setConstraints(stngBtn, gbc);
 		getContentPane().add(stngBtn);
 
-
+		// Window表示
+		setVisible(true);
 	}
 
 	public class KeyEventMethod extends KeyAdapter {
@@ -152,7 +153,6 @@ public class matchStringStronger extends JFrame {
 
 
 
-		@Override
 		public void actionPerformed(ActionEvent e) {
 
 			JList listStr = outputList;
@@ -163,6 +163,7 @@ public class matchStringStronger extends JFrame {
 				 * 設定ボタン押したら表示
 				 */
 				sw.setVisible(true);
+				mss.setEnabled(false); // 親フレームをロック
 			} else {
 				// ---------------------------------------
 				// デバッグコード
@@ -178,6 +179,26 @@ public class matchStringStronger extends JFrame {
 				// ---------------------------------------
 			}
 		}
+	}
+
+	public class closeChildWindow extends WindowAdapter {
+
+		public void  windowClosing (WindowEvent e) {
+
+			if (e.getSource() != sw) {
+				System.out.println("プログラム終了");
+				System.exit(1);
+			} else {
+
+				mss.setEnabled(true);	// ロック解除
+				sw.setVisible(false);	// 非表示に
+
+				System.out.println("設定画面終了");
+			}
+
+		}
+
+
 	}
 	public boolean isStrRegResult (String ptnBase, String reg) {
         /**
@@ -216,10 +237,12 @@ public class matchStringStronger extends JFrame {
     }
 
 	// メインクラス
-	public static void main(String[] args) {
-		matchStringStronger mss = new matchStringStronger();
+    public static matchStringStronger getWindow() {
+    	return mss;
+    }
 
-		mss.setVisible(true);
+	public static void main(String[] args) {
+		matchStringStronger mssWindow = matchStringStronger.getWindow();
 	}
 
 }
