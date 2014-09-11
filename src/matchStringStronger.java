@@ -36,13 +36,13 @@ public class matchStringStronger extends JFrame {
 	JButton cnctBtn = new JButton("接続");
 	JButton stngBtn = new JButton("設定");
 	JScrollPane jsp = new JScrollPane(outputList);
-	JCheckBox cb = new JCheckBox("接続前に警告を出す。");
 
 	GridLayout gr = new GridLayout(3,1);
 	GridBagLayout gbl = new GridBagLayout();
 	GridBagConstraints gbc = new GridBagConstraints();
 	// ------------------------------------------
 	// test
+	// ファイルパスは変数で持っておいてgetter/setterで編集させるようにする？
 	File testFilePath = new File("C:\\pleiades\\workspace\\java_git\\src\\testmaster.txt"); // Security
 	settingWindow sw = new settingWindow();
 	ArrayList<Object> testList = sw.getMasterArrayList(testFilePath);
@@ -54,7 +54,7 @@ public class matchStringStronger extends JFrame {
 
 
 	private matchStringStronger() {
-		setSize(400, 200);
+		setBounds(100, 100, 400, 200);
 		setTitle("サジェスト");
 
 		inputField.addKeyListener(new KeyEventMethod());
@@ -170,6 +170,16 @@ public class matchStringStronger extends JFrame {
 				// ---------------------------------------
 				// 「接続」ボタンを押した時に、選択されているリストのテキストを
 				// 取得する。
+
+				/*
+				 * 接続を行うクラスは予めnewしておく。
+				 * #setRemoteAddress（String）でIPアドレスセット
+				 * #getRemoteAddress（） @return IP
+				 * #statrConnectionで実際に接続を行う。
+				 *
+				 *
+				 *
+				 */
 
 				String testString = "リストが選択されていません。";
 				if (obj != null) {
