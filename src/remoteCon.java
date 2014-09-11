@@ -1,3 +1,6 @@
+import java.net.Inet4Address;
+import java.net.InetAddress;
+
 public class remoteCon {
 	/**
 	 * このクラスは実際にリモートデスクトップ接続を行うものです。
@@ -46,6 +49,25 @@ public class remoteCon {
 		 *
 		 */
 		remoteAddress = nullAddress;
+	}
+
+	public boolean isConnectionEstablished () {
+		/**
+		 * 接続が確立しているか確認。
+		 */
+		return true;
+	}
+
+
+
+
+
+	/*
+	 * test method
+	 *
+	 */
+	public static void main(String[] args) {
+
 	}
 
 
